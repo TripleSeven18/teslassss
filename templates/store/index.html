@@ -1,3 +1,8 @@
+
+
+
+
+
 {% extends 'base.html' %}
 {% load static %}
 
@@ -37,7 +42,7 @@
                   <strong class="category-item-title">{{ category.title }}</strong>
                 </a>
               </div>
-            
+
             {% endfor %}
           {% endif %}
           </div>
@@ -56,14 +61,14 @@
 
             {% if products %}
               {% for product in products %}
-              
+
                 <!-- PRODUCT-->
                 <div class="col-xl-3 col-lg-4 col-sm-6">
                   <div class="product text-center">
                     <div class="position-relative mb-3">
 
                       <div class="badge text-white badge-"></div>
-                      
+
                       <a class="d-block" href="{% url 'store:product-detail' product.slug %}">
                         {% if product.product_image %}
                           <img class="img-fluid w-75 h-50" src="{{ product.product_image.url }}" alt="{{product.title}}">
@@ -95,7 +100,7 @@
               {% endfor %}
             {% endif %}
 
-            
+
 
           </div>
         </section>

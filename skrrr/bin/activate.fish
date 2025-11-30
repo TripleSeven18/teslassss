@@ -33,7 +33,7 @@ end
 # Unset irrelevant variables.
 deactivate nondestructive
 
-set -gx VIRTUAL_ENV /home/kingcode/Downloads/django-jewelry-shop-main/skrrr
+set -gx VIRTUAL_ENV '/home/kingcode/Downloads/completed projects/django-jewelry-shop-main/skrrr'
 
 set -gx _OLD_VIRTUAL_PATH $PATH
 set -gx PATH "$VIRTUAL_ENV/"bin $PATH

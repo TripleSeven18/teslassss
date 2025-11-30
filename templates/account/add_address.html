@@ -1,52 +1,53 @@
 {% extends 'base.html' %}
 {% load static %}
 
-    {% block content %}
+{% block content %}
 
-      <div class="container py-5">
-        <div class="col-md-8 offset-2">
+<div class="container py-5">
+    <div class="col-md-8 offset-md-2">
 
-        <h1 class="mb-5">Add New Address</h1>
-        
-        
-        <div class="card mb-4" id="forms">
-          <div class="card-header">
-            <small>
-            With a this account, you can save time during checkout, access your shopping bag from any device and view your order history.
-            </small>
-          </div>
-          <div class="card-body">
+        <div class="card shadow-sm mb-4" id="forms">
+            <div class="card-header">
+                <small class="text-muted">
+                    Save time during checkout, access your shopping bag from any device, and view your order history.
+                </small>
+            </div>
+            <div class="card-body">
 
-            {% include 'partials/_messages.html' %}
+                <h1 class="mb-4 text-center">Add New Address</h1>
 
-            <form method="post" action="">
-              <fieldset>
-                {% csrf_token %}
+                {% include 'partials/_messages.html' %}
 
-                {% for fm in form %}
-                    <div class="form-group">
-                        {{fm.label_tag}}
-                        {{fm}}
-                        <small class="text-danger">{{fm.errors|striptags}}</small>
+                <form method="post" action="">
+                    {% csrf_token %}
+                    {% for fm in form %}
+                        <div class="form-group mb-3">
+                            {{ fm.label_tag }}
+                            {{ fm }}
+                            {% if fm.errors %}
+                                <small class="text-danger">{{ fm.errors|striptags }}</small>
+                            {% endif %}
+                        </div>
+                    {% endfor %}
+
+                    {% if form.non_field_errors %}
+                        {% for error in form.non_field_errors %}
+                            <div class="alert alert-danger alert-dismissible fade show my-3" role="alert">
+                                {{ error }}
+                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+
+                    <div class="text-center">
+                        <button class="btn btn-primary btn-lg" type="submit">Save Address</button>
                     </div>
-                {% endfor %}
-                <button class="btn btn-primary" type="submit">Submit</button>
-              </fieldset>
+                </form>
 
-              {% if form.non_field_errors %}
-                {% for error in non_field_errors %}
-                    <p class="alert alert-danger my-3">
-                        {{error}}
-                    </p>
-                {% endfor %}
-              {% endif %}
-
-            </form>
-
-            
-          </div>
+            </div>
         </div>
 
-        </div>       
-      </div>
+    </div>
+</div>
+
 {% endblock content %}

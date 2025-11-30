@@ -1,59 +1,108 @@
 {% load static %}
 
-<!-- navbar-->
-      <header class="header bg-secondary">
-        <div class=" p-5  " >
-          <nav class="navbar navbar-expand-lg navbar-light py-3 px-lg-0"><a class="navbar-brand" href="{% url 'store:home' %}"><span class="font-weight-bolder text-light text-xxl-center text-uppercase">TESLAS HEALTHCARE</span></a>
-            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-              <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link active text-light " href="{% url 'store:home' %}">Home</a>
-                </li>
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-light " id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Categories</a>
-                  <div class="dropdown-menu  mt-3" aria-labelledby="pagesDropdown">
-                    {% if categories_menu %}
-                      {% for cat_menu in categories_menu %}
-                        <a class="dropdown-item border-0 transition-link text-danger " href="{% url 'store:category-products' cat_menu.slug %}">{{cat_menu.title}}</a>
-                      {% endfor %}
-                    {% endif %}
-                    <hr>
-                    <a class="dropdown-item border-0 transition-link text-danger " href="{% url 'store:all-categories' %}">All Categories</a>
-                    
-                </li>
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link text-light " href="{% url 'store:checkout' %}">Checkout</a>
-                </li>
-                <li class="nav-item">
-                  <!-- Link--><a class="nav-link text-light " href="{% url 'store:home' %}">Contact</a>
-                </li>
-              </ul>
-              <ul class="navbar-nav ml-auto"> 
-                {% if request.user.is_authenticated %}           
-                  <li class="nav-item"><a class="nav-link text-light " href="{% url 'store:cart' %}"> <i class="fas fa-dolly-flatbed mr-1 text-danger"></i>Cart<small class="text-dark">({{cart_items.count}})</small></a></li>
-                  <li class="nav-item"><a class="nav-link" href="#"> <i class="far fa-heart mr-1 text-danger"></i><small class="text-dark"> (0)</small></a></li>
-                  {% comment %} <li class="nav-item"><a class="nav-link" href="#"> <i class="fas fa-user-alt mr-1 text-gray"></i>My Account</a></li> {% endcomment %}
+<!-- Modern Navbar -->
+<header class="header fixed-top shadow-sm">
+  <nav class="navbar navbar-expand-lg navbar-light py-3"
+       style="backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.75);">
 
-                  <li class="nav-item dropdown"><a class="nav-link dropdown-toggle text-light " id="pagesDropdown" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="fas fa-user-alt mr-1 text-danger"></i>My Account</a></a>
-                  
-                  <div class="dropdown-menu mt-3" aria-labelledby="pagesDropdown">
-                    
-                      <a class="dropdown-item border-0 transition-link text-danger " href="{% url 'store:profile' %}">Profile</a>
-                      <a class="dropdown-item border-0 transition-link text-danger" href="{% url 'store:cart' %}">Cart</a>
-                      <a class="dropdown-item border-0 transition-link text-danger" href="{% url 'store:orders' %}">Orders</a>
-                      <a class="dropdown-item border-0 transition-link text-danger" href="{% url 'store:password-change' %}">Change Password</a>
+    <!-- Brand -->
+    <a class="navbar-brand font-weight-bold text-uppercase"
+       href="{% url 'store:home' %}"
+       style="font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 1px; color:#1a1a1a;">
+      TESLAS <span class="text-danger">HEALTHCARE</span>
+    </a>
 
-                    <hr>
-                    <a class="dropdown-item border-0 transition-link" href="{% url 'store:logout' %}">Log Out</a>
-                    
-                </li>
-                {% else %}
-                  <li class="nav-item"><a class="nav-link" href="{% url 'store:login' %}">Login</a></li>
-                  <li class="nav-item"><a class="nav-link" href="{% url 'store:register' %}">Create Account</a></li>
-                {% endif %}   
-              </ul>
+    <!-- Mobile Toggle -->
+    <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarContent"
+            aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Navbar Links -->
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav mx-1 text-center">
+        <li class="nav-item ">
+          <a class="nav-link text-dark font-weight-medium" href="{% url 'store:home' %}">Home</a>
+        </li>
+
+        <!-- Categories Dropdown -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle text-dark font-weight-medium" id="categoriesDropdown" href="#"
+             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Categories
+          </a>
+          <div class="dropdown-menu border-0 shadow-sm rounded-lg" aria-labelledby="categoriesDropdown">
+            {% if categories_menu %}
+              {% for cat_menu in categories_menu %}
+                <a class="dropdown-item text-muted" href="{% url 'store:category-products' cat_menu.slug %}">
+                  {{cat_menu.title}}
+                </a>
+              {% endfor %}
+            {% endif %}
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item text-danger font-weight-bold" href="{% url 'store:all-categories' %}">
+              All Categories
+            </a>
+          </div>
+        </li>
+
+        <li class="nav-item px-2">
+          <a class="nav-link text-dark font-weight-medium" href="{% url 'store:mpesa_payment' %}">Checkout</a>
+        </li>
+        <li class="nav-item px-2">
+          <a class="nav-link text-dark font-weight-medium" href="{% url 'store:home' %}">Contact</a>
+        </li>
+      </ul>
+
+      <!-- Right Side -->
+      <ul class="navbar-nav ml-auto text-center">
+        {% if request.user.is_authenticated %}
+          <li class="nav-item px-2">
+            <a class="nav-link text-dark" href="{% url 'store:cart' %}">
+              <i class="fas fa-shopping-cart text-danger mr-1"></i>
+              Cart <span class="badge badge-pill badge-danger">{{ cart_items.count }}</span>
+            </a>
+          </li>
+
+          <!-- My Account Dropdown -->
+          <li class="nav-item dropdown px-2">
+            <a class="nav-link dropdown-toggle text-dark" id="accountDropdown" href="#" data-toggle="dropdown"
+               aria-haspopup="true" aria-expanded="false">
+              <i class="fas fa-user-circle text-danger mr-1"></i> My Account
+            </a>
+            <div class="dropdown-menu border-0 shadow-sm rounded-lg" aria-labelledby="accountDropdown">
+              <a class="dropdown-item" href="{% url 'store:profile' %}">Profile</a>
+              <a class="dropdown-item" href="{% url 'store:cart' %}">Cart</a>
+              <a class="dropdown-item" href="{% url 'store:orders' %}">Orders</a>
+              <a class="dropdown-item" href="{% url 'store:password-change' %}">Change Password</a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item text-danger font-weight-bold" href="{% url 'store:logout' %}">Log Out</a>
             </div>
-          </nav>
-        </div>
-      </header>
+          </li>
+        {% else %}
+          <li class="nav-item px-2"><a class="nav-link text-dark" href="{% url 'store:login' %}">Login</a></li>
+          <li class="nav-item px-2"><a class="btn btn-danger rounded-pill px-3" href="{% url 'store:register' %}">Create Account</a></li>
+        {% endif %}
+      </ul>
+    </div>
+  </nav>
+</header>
 
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+  .nav-link {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 0.95rem;
+    transition: color 0.3s ease, transform 0.2s ease;
+  }
+  .nav-link:hover {
+    color: #dc3545 !important;
+    transform: translateY(-2px);
+  }
+  .dropdown-menu a:hover {
+    background: #f8f9fa;
+    color: #dc3545 !important;
+  }
+</style>

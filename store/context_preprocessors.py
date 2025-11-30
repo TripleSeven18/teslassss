@@ -2,21 +2,23 @@ from .models import Category, Cart
 
 
 def store_menu(request):
-    categories = Category.objects.filter(is_active=True)
-    context = {
-        'categories_menu': categories,
+    """Provide active categories to all templates."""
+    return {
+        'categories_menu': Category.objects.filter(is_active=True)
     }
-    return context
+
 
 def cart_menu(request):
+    """Provide cart items for authenticated users."""
     if request.user.is_authenticated:
-        cart_items= Cart.objects.filter(user=request.user)
-        context = {
-            'cart_items': cart_items,
+        return {
+            'cart_items': Cart.objects.filter(user=request.user)
         }
-    else:
-        context = {}
-    return context
+    return {}
+
 
 def currency(request):
-    return {'CURRENCY_SYMBOL': "KSH"}
+    """Provide global currency symbol."""
+    return {
+        'CURRENCY_SYMBOL': "KSH"
+    }
