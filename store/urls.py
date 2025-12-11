@@ -20,7 +20,6 @@ urlpatterns = [
     # -----------------------------------
     path('', views.home, name="home"),
 
-
     # -----------------------------------
     # CART + CHECKOUT + ORDERS
     # -----------------------------------
@@ -32,24 +31,23 @@ urlpatterns = [
     path('cart/', views.cart, name="cart"),
     path('checkout/', views.checkout, name="checkout"),
     path('orders/', views.orders, name="orders"),
-    path('mpesa/', views.mpesa_payment, name="mpesa_payment"),
 
+    path('mpesa/', views.mpesa_payment, name="mpesa_payment"),
+    path('mpesa-callback/', views.mpesa_callback, name='mpesa_callback'),
+    path('payment-success/', views.payment_success, name='payment_success'),
+    path('payment-failed/', views.payment_failed, name='payment_failed'),
 
     # -----------------------------------
     # PRODUCT + CATEGORY VIEWS
     # -----------------------------------
     path('product/<slug:slug>/', views.detail, name="product-detail"),
     path('categories/', views.all_categories, name="all-categories"),
-    path('<slug:slug>/', views.category_products, name="category-products"),
-
     path('shop/', views.shop, name="shop"),
-
 
     # -----------------------------------
     # NEWSLETTER
     # -----------------------------------
     path('subscribe-newsletter/', views.subscribe_newsletter, name='subscribe-newsletter'),
-
 
     # -----------------------------------
     # AUTHENTICATION + USER PROFILE
@@ -68,7 +66,6 @@ urlpatterns = [
         ),
         name="login"
     ),
-
     path('accounts/profile/', views.profile, name="profile"),
 
     path(
@@ -88,7 +85,6 @@ urlpatterns = [
         auth_views.LogoutView.as_view(next_page='store:login'),
         name="logout"
     ),
-
 
     # -----------------------------------
     # PASSWORD MANAGEMENT
@@ -147,10 +143,11 @@ urlpatterns = [
         name="password_reset_complete"
     ),
 
-
     # -----------------------------------
     # EXTRA / TEST PAGE
     # -----------------------------------
     path('product/test/', views.test, name="test"),
 
+    # This should be the last URL pattern
+    path('<slug:slug>/', views.category_products, name="category-products"),
 ]

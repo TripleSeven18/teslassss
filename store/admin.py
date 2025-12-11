@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Address, Category, Product, Cart, Order
+from .models import Address, Category, Product, Cart, Order, OrderItem
 
 # Register your models here.
 class AddressAdmin(admin.ModelAdmin):
@@ -34,12 +34,16 @@ class CartAdmin(admin.ModelAdmin):
     search_fields = ('user', 'product')
 
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    raw_id_fields = ['product']
+
+
 class OrderAdmin(admin.ModelAdmin):
-    list_display = ('user', 'product', 'quantity', 'status', 'ordered_date')
-    list_editable = ('quantity', 'status')
+    list_display = ('id', 'user', 'address', 'total_amount', 'status', 'ordered_date')
     list_filter = ('status', 'ordered_date')
-    list_per_page = 20
-    search_fields = ('user', 'product')
+    search_fields = ('user__username', 'address__locality')
+    inlines = [OrderItemInline]
 
 
 admin.site.register(Address, AddressAdmin)
@@ -47,3 +51,4 @@ admin.site.register(Category, CategoryAdmin)
 admin.site.register(Product, ProductAdmin)
 admin.site.register(Cart, CartAdmin)
 admin.site.register(Order, OrderAdmin)
+admin.site.register(OrderItem)

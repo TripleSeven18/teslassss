@@ -10,12 +10,15 @@
 
       <!-- HERO SECTION-->
       <div class=" rounded">
-        <section class="hero pb-3  bg-center d-flex align-items-right " style="background: url({% static 'img/t1.jpg' %})">
-          <div class="container py-5">
+        <section class="hero pb-3  bg-center d-flex align-items-center " style="background: url({% static 'img/t1.jpg' %});">
+          <div class="container">
             <div class="row px-4 px-lg-5">
               <div class="col-lg-6">
-                <p class="text-muted text-lg-left text-uppercase ">Engineering the Pulse of Modern Medicine</p>
-                <h1 class="h2 text-uppercase mb-3">Reliability, performance, and innovation — embedded into every device.</h1><a class=" rounded btn btn-danger" href="{% url 'store:all-categories' %}">Browse collections</a>
+                <img src="{% static 'img/logo.jpg' %}" alt="TESLAS HEALTHCARE Logo" class="mb-3" style="height: 250px;">
+                <a class=" rounded btn btn-danger" href="{% url 'store:all-categories' %}">Browse collections</a>
+              </div>
+              <div class="col-lg-6 text-right">
+                
               </div>
             </div>
           </div>
@@ -23,9 +26,9 @@
 
 
         <!-- CATEGORIES SECTION-->
-        <section class="pt-5">
-          <header class="text-center">
-            <p class=" text-muted text-xxl-center text-uppercase mb-5"> Every Tesla machine is a fusion of clinical insight and sustainability — ensuring life-changing performance at every turn.</p>
+        <section class="pt-5 text-center">
+          <header>
+            <p class=" text-muted text-uppercase mb-5"> Every Tesla machine is a fusion of clinical insight and sustainability — ensuring life-changing performance at every turn.</p>
             <h2 class="h5 text-uppercase mb-4">Browse our categories</h2>
           </header>
           <div class="row">
@@ -50,10 +53,10 @@
 
 
         <!-- TRENDING PRODUCTS-->
-        <section class="py-5">
+        <section class="py-5 text-center">
           <header>
-            <h3 class="text-muted text-lg-center mb-5 text-uppercase">Why Choose Teslas</h3>
-              <p class="text-center p-5 text-dark font-weight-bolder">
+            <h3 class="text-muted mb-5 text-uppercase">Why Choose Teslas</h3>
+              <p class="p-5 text-dark font-weight-bolder">
                 Tesla Healthcare Machinery redefines the limits of performance and precision — delivering intelligent tools that empower hospitals, clinics, and care providers worldwide.
               </p>
           </header>
@@ -64,7 +67,7 @@
 
                 <!-- PRODUCT-->
                 <div class="col-xl-3 col-lg-4 col-sm-6">
-                  <div class="product text-center">
+                  <div class="product">
                     <div class="position-relative mb-3">
 
                       <div class="badge text-white badge-"></div>
@@ -107,9 +110,9 @@
 
 
         <!-- SERVICES-->
-        <section class="py-5 bg-light">
+        <section class="py-5 bg-light text-center">
           <div class="container">
-            <div class="row text-center">
+            <div class="row">
               <div class="col-lg-4 mb-3 mb-lg-0">
                 <div class="d-inline-block">
                   <div class="media align-items-end">
@@ -155,7 +158,7 @@
 
 
         <!-- NEWSLETTER-->
-        <section class="py-5">
+        <section class="py-5 text-center">
           <div class="container p-0">
             <div class="row">
               <div class="col-lg-6 mb-3 mb-lg-0">

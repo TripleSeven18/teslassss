@@ -130,3 +130,13 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 SHIPPING_COST = 10
+
+# M-Pesa API Credentials
+
+MPESA_CONSUMER_KEY = 'OIA3V9XxEgHEhIsstwz8K0p4kzGRsfZ0dGuUPN9yJG23GqNn'
+MPESA_CONSUMER_SECRET = 'BAXYuQXBQzTg8PAIJmX6dFbpLBAh6WAOMIzAiGmcW7ApvjZJgcxGqwrO2iMozLo5'
+MPESA_SHORTCODE = '174379'
+MPESA_SHORTCODE_PASSWORD = 'bfb279f9aa9bdbcf158e97dd71a467cd2e0c893059b10f78e6b27dcded304fbf'
+MPESA_SANDBOX_URL = 'https://sandbox.safaricom.co.ke'  # For testing environment
+MPESA_LIVE_URL = 'https://api.safaricom.co.ke'  # For live environment
+

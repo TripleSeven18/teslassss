@@ -10,6 +10,10 @@
     <div class="container">
       <div class="row px-4 px-lg-5 py-lg-4 align-items-center">
         <div class="col-lg-6">
+          <!-- Logo Icon Only (removed the main text logo) -->
+          <a href="{% url 'store:home' %}" style="position: absolute; left: 20px; top: 20px;">
+            <img src="{% static 'img/logo.jpg' %}" alt="TESLAS HEALTHCARE Logo" style="height: 50px;"> <!-- Only Icon -->
+          </a>
           <h1 class="h2 text-uppercase mb-0">Cart</h1>
         </div>
         <div class="col-lg-6 text-lg-right">
@@ -96,9 +100,9 @@
               </a>
             </div>
             <div class="col-md-6 text-md-right">
-              <a class="btn btn-outline-dark btn-sm" href="{% url 'store:mpesa_payment' %}">
-                Proceed to Pay <i class="fas fa-long-arrow-alt-right ml-2"></i>
-              </a>
+                <button type="submit" form="myform" class="btn btn-outline-dark btn-sm">
+                  Proceed to Pay <i class="fas fa-long-arrow-alt-right ml-2"></i>
+                </button>
             </div>
           </div>
         </div>

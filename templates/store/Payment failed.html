@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container py-5">
+    <h1 class="text-uppercase">Payment Failed</h1>
+    <p>Sorry, your payment could not be processed. Please try again.</p>
+    <a href="{% url 'store:cart' %}" class="btn btn-dark">Go back to Cart</a>
+</div>
+{% endblock %}

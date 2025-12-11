@@ -47,6 +47,25 @@ class RegistrationForm(UserCreationForm):
             })
         }
 
+    def clean_email(self):
+        email = self.cleaned_data.get('email')
+        if User.objects.filter(email=email).exists():
+            raise forms.ValidationError("This email address is already in use.")
+        return email
+
+    def clean_username(self):
+        username = self.cleaned_data.get('username')
+        if User.objects.filter(username=username).exists():
+            raise forms.ValidationError("This username is already taken.")
+        return username
+
+    def clean_password2(self):
+        cd = self.cleaned_data
+        if cd['password1'] != cd['password2']:
+            raise forms.ValidationError('Passwords don’t match.')
+        password_validation.validate_password(cd['password1'], self.instance)
+        return cd['password2']
+
 
 class LoginForm(AuthenticationForm):
     username = UsernameField(

@@ -5,11 +5,9 @@
   <nav class="navbar navbar-expand-lg navbar-light py-3"
        style="backdrop-filter: blur(12px); background: rgba(255, 255, 255, 0.75);">
 
-    <!-- Brand -->
-    <a class="navbar-brand font-weight-bold text-uppercase"
-       href="{% url 'store:home' %}"
-       style="font-family: 'Playfair Display', serif; font-size: 1.5rem; letter-spacing: 1px; color:#1a1a1a;">
-      TESLAS <span class="text-danger">HEALTHCARE</span>
+    <!-- Logo Icon Only -->
+    <a class="navbar-brand d-flex align-items-center" href="{% url 'store:home' %}" style="position: absolute; left: 40px; top: 20px;">
+      <img src="{% static 'img/logo.jpg' %}" alt="TESLAS HEALTHCARE Logo" style="height: 180px;">
     </a>
 
     <!-- Mobile Toggle -->
@@ -20,7 +18,7 @@
 
     <!-- Navbar Links -->
     <div class="collapse navbar-collapse" id="navbarContent">
-      <ul class="navbar-nav mx-1 text-center">
+      <ul class="navbar-nav mx-auto text-center">
         <li class="nav-item ">
           <a class="nav-link text-dark font-weight-medium" href="{% url 'store:home' %}">Home</a>
         </li>
@@ -92,15 +90,30 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
 
 <style>
+  .navbar-brand {
+    display: flex;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    top: 0;
+    padding-left: 10px;
+  }
+
+  .navbar-brand img {
+    height: 40px; /* Adjust logo size if needed */
+  }
+
   .nav-link {
     font-family: 'Montserrat', sans-serif;
     font-size: 0.95rem;
     transition: color 0.3s ease, transform 0.2s ease;
   }
+
   .nav-link:hover {
     color: #dc3545 !important;
     transform: translateY(-2px);
   }
+
   .dropdown-menu a:hover {
     background: #f8f9fa;
     color: #dc3545 !important;
